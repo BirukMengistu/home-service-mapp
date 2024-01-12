@@ -10,16 +10,15 @@ const Tab = createBottomTabNavigator();
 function MainTabs() {
   return (
     <Tab.Navigator
-      ScreenOptions={{
-        headerShown: false,
-      }}
+    screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
         name="home"
-     options={{
+        options={{
           tabBarIcon: ({ color, size }) => (
              <FontAwesome name="home" color={Colors.PRIMARY} size={size} />
           ),
+          
         }}
         component={Home}
       />
