@@ -1,10 +1,11 @@
-import { View, Text, FlatList, ScrollView, Image } from 'react-native'
+import { View, Text, FlatList, ScrollView, Image, TouchableOpacity } from 'react-native'
 import  React, { useEffect ,useState } from 'react'
 import GlobalApi from '../utls/GlobalApi'
 import Heading from '../../components/Heading'
-
+import {useNavigation} from '@react-navigation/native'
 export default function Categories() {
     const [categories ,setCategories] =useState()
+    const navigation = useNavigation()
     const getCategories=()=>{
         GlobalApi.getCategories().then(
             (resp =>{
@@ -26,7 +27,11 @@ export default function Categories() {
       horizontal={true}
       renderItem={({item,index}) =>
         (
-         <View className='mx-2 '>
+        <TouchableOpacity 
+          onPress={()=>{navigation.push('service-list',{
+            category:item?.name
+          })}}>
+            <View className='mx-2 '>
            <Image source={{uri:item.icon.url}} 
              style={{width:80, height:80 ,
               borderRadius:50,
@@ -34,6 +39,8 @@ export default function Categories() {
               objectFit:'contain'}}/>
               <Text className='text-center mt-2 font-semibold'>{item?.name}</Text>
            </View> 
+        </TouchableOpacity>
+         
            
         )}
       /> 

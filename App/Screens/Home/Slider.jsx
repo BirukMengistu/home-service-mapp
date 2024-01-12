@@ -29,7 +29,7 @@ export default function Slider() {
              style={{width:250, height:120 ,
               borderRadius:20,
               borderWidth:2,
-              objectFit:'contain'}}/>
+              objectFit:'cover'}}/>
            </View> 
         )}
       /> 
