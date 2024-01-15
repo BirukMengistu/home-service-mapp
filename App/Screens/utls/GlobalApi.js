@@ -63,7 +63,10 @@ const getServicelistByCategory=async (category)=>{
 servicesList(where: {category: {name: "`+category+`" }}) {
   about
   address
-  email
+  email,
+  category{
+    name
+  },
   images {
     url
   }

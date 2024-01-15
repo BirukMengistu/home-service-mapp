@@ -26,7 +26,7 @@ export default function Servicelist() {
             data={servicelist}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            renderItem={({item,index}) =>
+            renderItem={({item,index}) => 
                 (
                 <Services item={item} key={index} />
                 )}
