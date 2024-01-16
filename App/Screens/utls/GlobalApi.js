@@ -61,17 +61,17 @@ const getServicelistByCategory=async (category)=>{
   const query=gql`
   query getServicelist {
 servicesList(where: {category: {name: "`+category+`" }}) {
-  about
-  address
-  email,
-  category{
+    about
+    address
+    email
+    images {
+      url
+    }
     name
-  },
-  images {
-    url
-  }
-  name
-  contactPerson
+    contactPerson
+    imageslist {
+      url
+    }
 }
 }
   `
