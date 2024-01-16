@@ -20,16 +20,17 @@ export default function Header() {
                     </Text>
                 </View>
                 </View>
-                <FontAwesome name="bookmark-o" size={44} color="white" />
+                
         </View>
        
       
        {/*  search bar section */}
-       <View className='flex flex-row px-2 justify-center items-center mb-2'>
+       <View className='flex flex-row px-2 justify-center items-center mb-8'>
           < TextInput placeholder="search"
-           className='p-2 mr-1 w-[75%] text-[20px] bg-white px-2 rounded-md'/>
-           <TouchableOpacity>
-            <FontAwesome name="search" size={24} color="white" />
+           className='p-2 mr-1 w-[80%] text-[20px] bg-white px-2 rounded-md'/>
+           <TouchableOpacity 
+           className='bg-white p-2 rounded-md'>
+            <FontAwesome name="search" size={32} color="blue" />
            </TouchableOpacity>
        </View>
       </View>

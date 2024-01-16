@@ -5,29 +5,29 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Booking from "../Screens/Booking/Booking";
 import Colors from "../Screens/utls/Colors";
 import { FontAwesome , MaterialCommunityIcons} from "@expo/vector-icons";
+import HomeNavigation from "./HomeNavigation";
 const Tab = createBottomTabNavigator();
 
 function MainTabs() {
   return (
     <Tab.Navigator
-      ScreenOptions={{
-        headerShown: false,
-      }}
+    screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
         name="home"
-     options={{
+        options={{
           tabBarIcon: ({ color, size }) => (
-             <FontAwesome name="home" color={Colors.PRIMARY} size={size} />
+             <FontAwesome name="home" color={Colors.SECONDARY} size={size} />
           ),
+          
         }}
-        component={Home}
+        component={HomeNavigation}
       />
       <Tab.Screen name="booking" 
       component={Booking} 
       options={{
         tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="book-check" size={24} color={Colors.PRIMARY} />
+            <MaterialCommunityIcons name="book-check" size={24} color={Colors.SECONDARY} />
         ),
       }}/>
       <Tab.Screen name="profile" 
