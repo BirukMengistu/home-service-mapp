@@ -1,4 +1,4 @@
-import { View, Text ,SafeAreaView, ScrollView } from 'react-native'
+import { View, Text ,SafeAreaView, ScrollView, StyleSheet, Platform, StatusBar } from 'react-native'
 import React from 'react'
 import Header from './Header'
 import Slider from './Slider'
@@ -7,7 +7,7 @@ import Servicelist from './Servicelist'
 
 export default function Home() {
   return (
-    <SafeAreaView >
+    <SafeAreaView style={styles.AndroidSafeArea} >
         <ScrollView>
              {/* header component */}
       <Header/>
@@ -22,3 +22,10 @@ export default function Home() {
     </SafeAreaView>
   )
 }
+
+
+const styles = StyleSheet.create({
+  AndroidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+  }
+});

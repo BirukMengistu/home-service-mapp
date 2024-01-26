@@ -18,6 +18,57 @@ const getSlider = async () => {
   return Slider_Result;
 };
 
+const getMyInbox= async(email)=>{
+  const inboxQuery=gql`
+      query myInbox {
+        inboxes(
+          orderBy: updatedAt_DESC
+          where: {AND:  {userEmail_contains: "`+email+`"}}
+        ) {
+          userName
+          userEmail
+          message
+          servicesLists {
+            name
+            images {
+              url
+            }
+            telephone
+            address
+            email
+            contactPerson
+            category {
+              name
+            }
+          }
+        }
+}`
+  const inbox_Result = await request(Base_URL, inboxQuery);
+
+  return inbox_Result;
+} 
+
+
+const CreateMessage = async (data) => {
+  const {userEmail ,userName ,message ,servicesId } =data
+  
+  const mutationQuery = gql`
+  mutation CreateMessage {
+  createInbox(
+    data: { 
+    servicesLists: { connect: { id:"`+servicesId+`" } }, 
+    userEmail: "` +userEmail + `",
+    userName: "` +userName +` " ,
+    message: "`+message + `"
+      }) {id}
+      publishManyInboxes(to: PUBLISHED) {
+      count
+     }
+      }`;
+ 
+  const send_messageResp = await request(Base_URL, mutationQuery);
+  return send_messageResp;
+};
 const getCategories = async () => {
   const query = gql`
     query GetSliders {
@@ -38,32 +89,41 @@ const getCategories = async () => {
 const getServiceLists = async () => {
   const query = gql`
     query getServicelist {
-        servicesList {
-    about
-    address
-    category {
-      name
-    }
-    contactPerson
-    email
-    images {
-      url
-    }
-    name
-  }
+      servicesList (
+        orderBy: updatedAt_DESC
+      ) {
+        about
+        address
+        category {
+          name
+        }
+        contactPerson
+        email
+        images {
+          url
+        }
+        name
+      }
     }
   `;
   const Servicelists_Result = await request(Base_URL, query);
   return Servicelists_Result;
 };
 
-const getServicelistByCategory=async (category)=>{
-  const query=gql`
+const getServicelistByCategory = async (category) => {
+  const query =
+    gql`
   query getServicelist {
-servicesList(where: {category: {name: "`+category+`" }}) {
-    about
-    address
-    email
+servicesList(where: {category: {name: "` +
+    category +
+    `" }}) {
+    id,
+    about,
+    address,
+    email,
+    category{
+      name
+    },
     images {
       url
     }
@@ -74,14 +134,101 @@ servicesList(where: {category: {name: "`+category+`" }}) {
     }
 }
 }
-  `
+  `;
 
-const ServicelistsByCategory_Result = await request(Base_URL, query);
-return ServicelistsByCategory_Result;
+  const ServicelistsByCategory_Result = await request(Base_URL, query);
+  return ServicelistsByCategory_Result;
+};
+
+const createbookingServices = async (data) => {
+  const {time , date ,userEmail ,userName ,note ,servicesId } =data
+  
+  const mutationQuery = gql`
+  mutation CreateBookingservice {
+  createBookingservices(
+    data: { 
+    bookingProgress: Booked,
+    time: "`+time + `" ,
+    date: "` + date +`",
+    servicesLists: { connect: { id:"`+servicesId+`" } }, 
+    userEmail: "` +userEmail + `",
+    userName: "` +userName +` " ,
+    note: "`+note + `"
+      }) {id}
+      publishManyBookingservice(to: PUBLISHED) {
+      count
+     }
+      }`;
+ 
+  const ServiceBooking_Result = await request(Base_URL, mutationQuery);
+  return ServiceBooking_Result;
+};
+
+
+
+const getSearchServices= async (searchKey)=>{
+  console.log('searchKey',searchKey)
+  const query=gql`
+  query mysearch {
+  servicesList(where: { _search: "`+ searchKey +`" }) {
+        id
+        about
+        address
+        category {
+          name
+        }
+        contactPerson
+        email
+        images {
+          url
+        }
+        name
+      }
+  }
+  `
+  const Result = await request(Base_URL,query);
+  return Result;
+}
+
+
+const MyBooking = async(email)=>{
+  
+const myBooking_Query= gql`
+query MyBookingList {
+  bookingservice(orderBy: updatedAt_DESC, where: {userEmail:"`+ email +`"}) {
+    note,
+    date,
+    time,
+    userEmail,
+    userName,
+    bookingProgress,
+    id,
+    servicesLists {
+      images {
+        url
+      },
+      name,
+      address,
+      contactPerson,
+      category{
+        name
+      },
+      email
+    }
+  }
+}`
+
+const myBooking_Result = await request(Base_URL, myBooking_Query);
+return myBooking_Result;
 }
 export default {
   getSlider,
   getCategories,
   getServiceLists,
-  getServicelistByCategory
+  getServicelistByCategory,
+  createbookingServices,
+  MyBooking,
+  getMyInbox,
+  CreateMessage,
+  getSearchServices
 };

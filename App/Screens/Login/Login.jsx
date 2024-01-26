@@ -11,9 +11,14 @@ import Colors from "../utls/Colors";
 import * as WebBrowser from "expo-web-browser";
 import { useOAuth } from "@clerk/clerk-expo";
 import { useWarmUpBrowser} from '../../hooks/warmUpBrowser'
+import * as Animatable from 'react-native-animatable'
+
+
+
+
 WebBrowser?.maybeCompleteAuthSession();
 export default function Login() {
-
+  
     useWarmUpBrowser();
     const { startOAuthFlow  } = useOAuth({ strategy: "oauth_google"});
    
@@ -33,17 +38,22 @@ export default function Login() {
         console.error("OAuth error", err);
       }
     }, []);
+    
   return (
     <SafeAreaView style={{ alignItems: "center" }}>
-      <Image
-        source={require("./../../../assets/login.png")}
-        style={styles.LoginImage}
-      />
+       
+          <Animatable.Image
+          animation='fadeIn'
+          easing='ease-in-out'
+          source={require("./../../../assets/loading.png")}
+          style={styles.LoginImage}
+          /> 
+      
       <View style={styles.subContainer}>
         <Text style={{ fontSize: 27, color: "white", textAlign: "center" }}>
           Let's find{" "}
           <Text style={{ fontWeight: "bold" }}>
-            Professional freelance Cleaning and repair services
+            Your day to day services providers
           </Text>
         </Text>
         <Text
@@ -54,18 +64,19 @@ export default function Login() {
             textAlign: "center",
           }}
         >
-          Discover the finest professionals near your vicinity who offer
+          Discover the finest Services near your vicinity who offer
           top-notch services with impeccable delivery.
         </Text>
         <TouchableOpacity  onPress={onPress}
         style={styles.button}>
           <Text
-            style={{ textAlign: "center", fontSize: 17, color: Colors.PRIMARY }}
+            style={{ textAlign: "center", fontSize: 24, color: Colors.SECONDARY }}
           >
             Shall we Begin..
           </Text>
         </TouchableOpacity>
       </View>
+     
     </SafeAreaView>
   );
 }
@@ -79,6 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: "#000000",
   },
+
   subContainer: {
     width: "100%",
     backgroundColor: Colors.SECONDARY,
