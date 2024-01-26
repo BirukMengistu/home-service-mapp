@@ -1,5 +1,7 @@
-export const name = 'Home-services';
-export const version = '1.0.0';
-export const extra = {
-    clerkPublishableKey: process.env.CLERK_PUBLISHABLE_KEY,
-};
+
+module.exports = {
+      name :'Home-services',
+      version :'1.0.0',
+      clerkPublishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+    
+  }

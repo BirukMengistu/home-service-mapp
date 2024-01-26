@@ -1,32 +1,34 @@
 import { View, Text, SafeAreaView ,StyleSheet, Platform, StatusBar, FlatList, ScrollView} from 'react-native'
 import React, { useEffect, useState } from 'react'
-import PageHeading from '../../components/PageHeading'
 import GlobalApi from '../utls/GlobalApi'
 import {useUser} from '@clerk/clerk-expo'
-import ServiceByCategory from '../ServicelistByCategory/ServiceByCategory'
+import PageHeading from '../../components/PageHeading'
+import Inboxlist from './Inboxlist'
 
-export default function Booking() {
+export default function Inbox() {
   const {user} = useUser()
-  const [myBookingList, setMyBookingList]=useState()
+  const [myInbox, setMyInbox]=useState()
   const getMyBooking =()=>{
-    GlobalApi.MyBooking(user?.primaryEmailAddress?.emailAddress).then(
-      response=>(setMyBookingList(response?.bookingservice))
+    GlobalApi.getMyInbox(user?.primaryEmailAddress?.emailAddress).then(
+      response=>(setMyInbox(response?.inboxes))
     )
   }
  
   useEffect(()=>{
    getMyBooking()
   },[user])
+
   return (
     <SafeAreaView style={styles.AndroidSafeArea}>
-      <PageHeading title='My Booking' />
+      <PageHeading title='Inboxes' />
       
       <View>
          <FlatList 
-          data={myBookingList}
+          data={myInbox}
+          onRefresh={getMyBooking()}
           renderItem={({item,index})=>
-            <ServiceByCategory item={item?.servicesLists}
-             booking={item}/>}/>
+            <Inboxlist item={item?.servicesLists}
+             inboxes={item}/>}/>
         </View>
       
       

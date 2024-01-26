@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
@@ -16,10 +17,14 @@ import Colors from "../utls/Colors";
 import ServicesImages from "./ServicesImages";
 import ServicesAbout from "./ServicesAbout";
 import ServicesContactAddress from "./ServicesContactAddress";
+import BookingModal from "./BookingModal";
+import Message from "../inbox/Message";
 
 export default function ServicesDetails() {
   const param = useRoute()?.params;
   const [item, setItem] = useState(param.item);
+  const [showModal, setShowModal] = useState(false);
+  const [showMsgModal, setShowMsgModal] = useState(false);
   const navigation = useNavigation();
   useEffect(() => {
     param && setItem(param.item);
@@ -58,9 +63,8 @@ export default function ServicesDetails() {
               </Text>
               <Text
                 style={{
-                  fontWeight: "300",
-                  color: Colors.Black,
                   backgroundColor: "lightblue",
+                  color:Colors.WHITE,
                   width: 80,
                   borderRadius: 8,
                   padding: 4,
@@ -119,19 +123,35 @@ export default function ServicesDetails() {
         </ScrollView>
         <View className='flex flex-row gap-2 m-2'>
               <TouchableOpacity
+              onPress={()=>setShowMsgModal(!showMsgModal)}
                 style={styles.Msgbtn} >
                 <Text style={{
                   textAlign:'center',
                   color:Colors.SECONDARY
                 }}>Message</Text>
               </TouchableOpacity >
-              <TouchableOpacity style={styles.bookingbtn}>
+              <TouchableOpacity style={styles.bookingbtn}
+              onPress={()=>setShowModal(!showModal)}>
                 <Text style={{
                   textAlign:'center',
                   color:'white'
                 }}>Booking</Text>
               </TouchableOpacity>
         </View>
+        <Modal
+         animationType="slide"
+         visible={showModal}>
+         <BookingModal
+         servicesId={item?.id}
+         />
+        </Modal>
+        <Modal
+         animationType="slide"
+         visible={showMsgModal}>
+         <Message
+          servicesId={item?.id}
+         />
+        </Modal>
       </SafeAreaView>
     )
   );

@@ -6,6 +6,7 @@ import * as SecureStore from "expo-secure-store";
 
 import MainTabs from './App/navigation/TabNavigation.jsx'
 import Navigation from './App/navigation/Navigation';
+import React, { useEffect, useState } from 'react';
 const tokenCache = {
   async getToken(key) {
     try {
@@ -22,10 +23,11 @@ const tokenCache = {
     }
   },
 };
+
+
  
 export default function App() {
-
-
+  
   return (
     <ClerkProvider tokenCache={tokenCache}
     publishableKey='pk_test_c21pbGluZy1tb2xsdXNrLTAuY2xlcmsuYWNjb3VudHMuZGV2JA'>
@@ -33,6 +35,7 @@ export default function App() {
       {/*  Sign In Component */}
         <SignedIn>
           <Navigation/>
+              
         </SignedIn>
         {/* Signout In Component */}
         <SignedOut>
