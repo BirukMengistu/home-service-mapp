@@ -55,21 +55,21 @@ export default function Profile() {
       onPress={
        ()=> navigation.goBack()
       }
-      className=' bg-white rounded-md p-2 border-[#A0DFF9] m-2'>
-      <Text className='text-[24px] text-center text-[#A0DFF9] mb-2'>Back</Text>
+      className=' bg-white rounded-md p-2 border-[#d2a81e] m-2'>
+      <Text className='text-[24px] text-center text-[#d2a81e] mb-2'>Back</Text>
       </TouchableOpacity>
       <TouchableOpacity
       onPress={
        ()=> signOut()
       }
-      className=' bg-[#A0DFF9]  rounded-md p-2  m-2'>
+      className=' bg-[#d2a81e]  rounded-md p-2  m-2'>
       <Text className='text-[24px] text-center text-white mb-2'>signout</Text>
       </TouchableOpacity>
       <TouchableOpacity
       onPress={
        ()=> navigation.navigate('inbox')
       }
-      className=' bg-[#A0DFF9]  rounded-md p-2  m-2'>
+      className=' bg-[#d2a81e]  rounded-md p-2  m-2'>
       <Text className='text-[24px] text-center text-white mb-2'>Inbox</Text>
       </TouchableOpacity>
      

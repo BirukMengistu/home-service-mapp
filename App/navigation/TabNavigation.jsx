@@ -24,7 +24,7 @@ const screenOptions = {
     elevation: 0,
     left: 0,
     height: 65,
-    backgroundColor: "#A0DFF9",
+    backgroundColor: "#d2a81e",
     color: "white",
     padding: 0.8,
   },
@@ -56,7 +56,7 @@ function MainTabs() {
                 top: Platform.OS === "ios" ? -15 : -20,
                 borderWidth: 2,
                 borderColor: "white",
-                backgroundColor: "#A0DFF9",
+                backgroundColor: "#d2a81e",
                 borderRadius: Platform.OS === "ios" ? 30 : 30,
               }}
             >

@@ -41,7 +41,7 @@ export default function ServicesDetails() {
             onPress={() => {
               navigation.goBack();
             }}
-            className={"absolute z-10 p-4 bg-cyan-400 rounded-md m-4"}
+            className={"absolute z-10 p-4 bg-[#e9ddbc] rounded-md m-4"}
           >
             <Ionicons
               name="arrow-back-outline"
@@ -58,12 +58,12 @@ export default function ServicesDetails() {
             <Text className="font-bold text-[24px]">{item?.name}</Text>
 
             <View className="flex flex-row">
-              <Text className="text-blue-500 font-semibold text-[20px] mr-2">
+              <Text className="text-[#d2a81e] font-semibold text-[20px] mr-2">
                 {item?.contactPerson}
               </Text>
               <Text
                 style={{
-                  backgroundColor: "lightblue",
+                  backgroundColor: "#e9ddbc",
                   color:Colors.WHITE,
                   width: 80,
                   borderRadius: 8,
@@ -85,7 +85,7 @@ export default function ServicesDetails() {
                   }}
                   name="ios-location-sharp"
                   size={32}
-                  color={Colors.SECONDARY}
+                  color='#d2a81e'
                 />
                 {item?.address}
               </Text>

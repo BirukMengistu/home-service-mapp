@@ -22,7 +22,7 @@ export default function ServiceByCategory({item}) {
                 marginRight:10
              }} name='ios-location-sharp' size={20} color={Colors.SECONDARY}/>
             {(item?.address).slice(0 ,20)} ..</Text>
-        <Text className='text-[16px] font-medium text-blue-500'>{item?.email}</Text>
+        <Text className='text-[16px] font-medium text-[#d2a81e]'>{item?.email}</Text>
         </View>
         </TouchableOpacity>
     </View>

@@ -9,7 +9,7 @@ export default function Header() {
   const navigation = useNavigation();
   return (
     user && (
-      <View className="flex bg-[#A0DFF9]  rounded-b-[15px] ">
+      <View className="flex bg-[#d2a81e]  rounded-b-[15px] ">
         <View className="flex flex-row justify-between items-center p-3">
                 <View className="flex flex-row pl-4 pt-5 ">
                 <Image
@@ -40,7 +40,7 @@ export default function Header() {
           <TouchableOpacity className="bg-white p-2 rounded-md"
              onPress={()=>navigation.navigate('search',
               search={searchKey})}>
-            <FontAwesome name="search" size={32} color="#A0DFF9" />
+            <FontAwesome name="search" size={32} color="#d2a81e" />
           </TouchableOpacity>
         </View>
       </View>

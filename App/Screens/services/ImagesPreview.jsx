@@ -38,7 +38,7 @@ const [showPreviewModal, setShowPreviewModal]=useState(false)
       </View>
        <TouchableOpacity onPress={()=>navigation.goBack()}
           className='flex justify-center items-center
-           bg-sky-600 p-2 rounded-xl '>
+           bg-[#d2a81e] p-2 rounded-xl '>
             <Text 
             className='text-white text-[24px] '>Close</Text>
        </TouchableOpacity>

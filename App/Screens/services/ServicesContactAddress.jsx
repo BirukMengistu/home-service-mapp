@@ -6,10 +6,10 @@ export default function ServicesContactAddress({item}) {
     <View className='mt-2'>
      
            <Heading title={'Contact Address'} />
-            <Text className="text-blue-500 font-normal text-[20px] mr-2">
+            <Text className="text-[#d2a81e] font-normal text-[20px] mr-2">
                 Email :- {item.email}
             </Text>
-            <Text className="text-blue-500 font-normal text-[20px] mr-2 ">
+            <Text className="text-[#d2a81e] font-normal text-[20px] mr-2 ">
                Telephone :- {item.telephone !==undefined ? item.telephone : 'Not Provided'}
             </Text>
      
