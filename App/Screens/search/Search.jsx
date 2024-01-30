@@ -25,7 +25,7 @@ export default function Search() {
     useEffect(()=>{
      HandleSearch(searchKey)
     },[])
-    console.log(searchResult)
+   
   return (
     <SafeAreaView style={styles.AndroidSafeArea}>
       

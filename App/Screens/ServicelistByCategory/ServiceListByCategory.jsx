@@ -25,7 +25,7 @@ export default function ServiceListByCategory() {
       <TouchableOpacity  onPress={()=> naviation.goBack()}>
       <View className='p-5 pt-7 flex flex-row items-center'>
         <Ionicons name='arrow-back-outline' size={30} color={Colors.SECONDARY}/>
-        <Text className='text-[25px] text-blue-300 font-medium'>{category}</Text>
+        <Text className='text-[25px] text-[#d2a81e] font-medium'>{category}</Text>
       </View>
       </TouchableOpacity>
      
