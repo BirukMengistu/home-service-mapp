@@ -12,9 +12,9 @@ import * as WebBrowser from "expo-web-browser";
 import { useOAuth } from "@clerk/clerk-expo";
 import { useWarmUpBrowser} from '../../hooks/warmUpBrowser'
 import * as Animatable from 'react-native-animatable'
+import { useEffect } from "react";
 
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 WebBrowser?.maybeCompleteAuthSession();
 export default function Login() {
@@ -38,6 +38,14 @@ export default function Login() {
         console.error("OAuth error", err);
       }
     }, []);
+
+    useEffect(()=>{
+
+      if(!AsyncStorage.getItem('savedtasks'))
+      {
+        AsyncStorage.setItem('savedtasks', JSON.stringify(initialTask))
+      }
+     },[])
     
   return (
     <SafeAreaView style={{ alignItems: "center" }}>
@@ -80,6 +88,7 @@ export default function Login() {
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   LoginImage: {
