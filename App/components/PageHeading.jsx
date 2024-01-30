@@ -10,14 +10,14 @@ export default function PageHeading({title}) {
             onPress={() => {
               navigation.goBack();
             }}
-            className={" flex flex-row z-10 p-4 rounded-md m-4"}
+            className={" flex flex-row z-10 p-4 rounded-md m-2"}
           >
             <Ionicons
               name="arrow-back-outline"
               size={24}
               color={Colors.SECONDARY}
             />
-            <Text className='text-[25px] text-blue-600 font-medium'>{title}</Text>
+            <Text className='text-[25px] text-[#d2a81e] font-medium'>{title}</Text>
           </TouchableOpacity>
   )
 }

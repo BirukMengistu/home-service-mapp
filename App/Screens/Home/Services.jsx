@@ -26,8 +26,8 @@ export default function Services({ item }) {
       </TouchableOpacity>
       <View className='flex gap-1'>
         <Text className="font-semibold py-1">{item?.contactPerson}</Text>
-        <Text style={{color:Colors.PRIMARY}}
-        className="text-[16px] text-gray-900 bg-blue-200 p-1 flex-initial rounded-md">
+        <Text 
+        className="text-[16px] text-[#120f0b] bg-[#f7efd4] p-1 flex-initial rounded-md">
           {item?.category.name}
         </Text>
       </View>

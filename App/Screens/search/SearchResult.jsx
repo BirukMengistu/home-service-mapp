@@ -28,7 +28,7 @@ export default function SearchResult({ item }) {
         <Text className="font-semibold py-1">{item?.contactPerson}</Text>
         <Text className="font-semibold py-1">{item?.email}</Text>
         <Text style={{color:Colors.PRIMARY}}
-        className="text-[16px] text-gray-900 bg-blue-200 p-1 flex-initial rounded-md">
+        className="text-[16px] text-gray-900 bg-[#f6f0dc] p-1 flex-initial rounded-md">
           {item?.category.name}
         </Text>
       </View>

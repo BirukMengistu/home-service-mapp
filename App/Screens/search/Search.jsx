@@ -25,7 +25,7 @@ export default function Search() {
     useEffect(()=>{
      HandleSearch(searchKey)
     },[])
-    console.log(searchResult)
+   
   return (
     <SafeAreaView style={styles.AndroidSafeArea}>
       
@@ -40,7 +40,7 @@ export default function Search() {
           />
           <TouchableOpacity className="bg-white p-2 rounded-md"
             onPress={()=> HandleSearch(searchKey)} >
-            <FontAwesome name="search" size={32} color="blue" />
+            <FontAwesome name="search" size={32} color="#d2a81e" />
           </TouchableOpacity>
         </View>
         {

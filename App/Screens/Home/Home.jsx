@@ -7,7 +7,7 @@ import Servicelist from './Servicelist'
 
 export default function Home() {
   return (
-    <SafeAreaView style={styles.AndroidSafeArea} >
+    <SafeAreaView >
         <ScrollView>
              {/* header component */}
       <Header/>
