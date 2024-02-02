@@ -167,7 +167,7 @@ const createbookingServices = async (data) => {
 
 
 const getSearchServices= async (searchKey)=>{
-  console.log('searchKey',searchKey)
+
   const query=gql`
   query mysearch {
   servicesList(where: { _search: "`+ searchKey +`" }) {
@@ -221,6 +221,71 @@ query MyBookingList {
 const myBooking_Result = await request(Base_URL, myBooking_Query);
 return myBooking_Result;
 }
+
+
+
+
+const getTags = async()=>{
+  const query =gql`
+  query getTags {
+  tags {
+    name
+    icon {
+      url
+    }
+  }
+}`
+const tags_result = await request(Base_URL, query);
+return tags_result;
+
+}
+
+const getInformationlist = async()=>{
+  const query =gql`
+  query getInformationlist {
+  information(orderBy: updatedAt_DESC) {
+    body
+    source
+    title
+    images {
+      url
+    }
+    tag {
+      ... on Tag {
+        name
+      }
+    }
+  }
+}
+`
+const info_result = await request(Base_URL, query);
+return info_result;
+
+}
+
+const getSearchInformation= async (searchKey)=>{
+const query = gql`
+query mysearch {
+  information(where: {_search: "`+ searchKey +`"}) {
+    id
+    tag {
+      ... on Tag {
+        id
+        name
+      }
+    }
+    images {
+      url
+    }
+    title
+    updatedAt
+    source
+    body
+  }
+}`
+const info_result = await request(Base_URL, query);
+return info_result;
+}
 export default {
   getSlider,
   getCategories,
@@ -230,5 +295,8 @@ export default {
   MyBooking,
   getMyInbox,
   CreateMessage,
-  getSearchServices
+  getSearchServices,
+  getTags,
+  getInformationlist,
+  getSearchInformation
 };

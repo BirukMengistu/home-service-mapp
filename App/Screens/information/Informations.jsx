@@ -2,14 +2,14 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "../utls/Colors";
 import {  useNavigation } from "@react-navigation/native";
-export default function Services({ item }) {
+export default function Informations({ item }) {
   const navigation = useNavigation();
   return (
     <View className=" p-1 bg-white rounded-md mx-2">
      <TouchableOpacity 
      onPress={
       ()=>navigation.navigate(
-        'service-detali',{
+        'informationDetails',{
           item:item
          } 
       )
@@ -25,14 +25,10 @@ export default function Services({ item }) {
       />
       </TouchableOpacity>
       <View className='flex gap-1'>
-        {item?.category?.name==='Events'&&
-
-<Text className="font-semibold py-1">{item?.name}</Text>
-        }
-        <Text className="font-semibold py-1">{item?.contactPerson}</Text>
+        <Text className="font-semibold py-1">{(item?.title).slice(0,10)}..</Text>
         <Text 
         className="text-[16px] text-[#120f0b] bg-[#f7efd4] p-1 flex-initial rounded-md">
-          {item?.category?.name}
+          {item?.tag?.name}
         </Text>
       </View>
     </View>

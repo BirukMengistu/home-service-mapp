@@ -4,30 +4,33 @@ import Heading from '../../components/Heading'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import GlobalApi from '../utls/GlobalApi'
-import Services from './Services'
+import Informations from './Informations'
 
-export default function Servicelist() {
-    const [servicelist ,setServicelist]=useState()
-    const getServiclist =()=>{
-  GlobalApi.getServiceLists()
+export default function Informationlist() {
+    const [informationlist ,setinFormationlist]=useState()
+    const getInformationlist =()=>{
+  GlobalApi.getInformationlist()
   .then(resp =>
-    setServicelist(resp?.servicesList))
+    setinFormationlist(resp?.information))
     }
     useEffect(()=>{
-        getServiclist()
-    },[servicelist])
+
+        getInformationlist()
+        
+    },[])
+    console.log('information',Informationlist)
   return (
     <View className='mt-2'>
-      <Heading title={'latest List of Services '} isViewAll={true} />
+      <Heading title={'latest List of formation '} isViewAll={true} />
       
             <ScrollView>
             <FlatList
-            data={servicelist}
+            data={informationlist}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({item,index}) => 
                 (
-                <Services item={item} key={index} />
+                <Informations item={item} key={index} />
                 )}
             /> 
             </ScrollView>

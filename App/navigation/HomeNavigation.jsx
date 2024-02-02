@@ -8,6 +8,9 @@ import Search from "../Screens/search/Search";
 import PersonalInfo from "../Screens/Profile/PersonalInfo";
 import AddNewTask from "../Screens/Profile/AddNewTask";
 import Tasklist from "../Screens/Profile/Task_lists";
+import Privacypolicy from "../Screens/Privacy/Privacypolicy";
+import Info from "../Screens/information/Info";
+import InformationDetails from "../Screens/information/InformationDetails";
 
 const Stack = createStackNavigator();
 
@@ -23,7 +26,10 @@ function HomeNavigation() {
       <Stack.Screen name="PersonalInfo" component={PersonalInfo} />
       <Stack.Screen name="tasklist" component={Tasklist} />
       <Stack.Screen name="addNewTask" component={AddNewTask} />
-      
+      <Stack.Screen name="privacy" component={Privacypolicy} />
+      <Stack.Screen name="info" component={Info} />
+      <Stack.Screen name="informationDetails" component={InformationDetails} />
+
     </Stack.Navigator>
   );
 }
